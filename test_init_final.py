@@ -269,9 +269,9 @@ async def my_background_task():
 		priv = now+datetime.timedelta(minutes=int(basicSetting[1]))
 		aftr = now+datetime.timedelta(minutes=int(0-int(basicSetting[2])))
 		
-		nowTimeString = now.strftime('%H:%M:%S')
+		nowTimeString = now.strftime('%H:%M')
 		nowDateString = now.strftime('%Y-%m-%d')
-		endTimeString = endTime.strftime('%H:%M:%S')
+		endTimeString = endTime.strftime('%H:%M')
 		endDateString = endTime.strftime('%Y-%m-%d')
 		
 
@@ -325,7 +325,7 @@ async def my_background_task():
 					#print ('if ', bossTime[i])
 					bossMungFlag[i] = True
 					tmp_bossTime[i] = bossTime[i]
-					tmp_bossTimeString[i] = tmp_bossTime[i].strftime('%H:%M:%S')
+					tmp_bossTimeString[i] = tmp_bossTime[i].strftime('%H:%M')
 					tmp_bossDateString[i] = tmp_bossTime[i].strftime('%Y-%m-%d')
 					bossTimeString[i] = '99:99:99'
 					bossDateString[i] = '9999-99-99'
@@ -348,7 +348,7 @@ async def my_background_task():
 								bossMungFlag[i] = False
 								bossMungCnt[i] = bossMungCnt[i] + 1
 								tmp_bossTime[i] = bossTime[i] = nextTime = now+datetime.timedelta(hours=int(bossData[i][1]), minutes=int(0-int(basicSetting[2])+int(bossData[i][5])))
-								tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+								tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 								tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 								embed = discord.Embed(
 									description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
@@ -364,7 +364,7 @@ async def my_background_task():
 								bossMungFlag[i] = False
 								bossMungCnt[i] = bossMungCnt[i] + 1
 								tmp_bossTime[i] = bossTime[i] = nextTime = now+datetime.timedelta(hours=int(bossData[i][1]), minutes=int(0-int(basicSetting[2])+int(bossData[i][5])))
-								tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+								tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 								tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 								embed = discord.Embed(
 									description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
@@ -467,7 +467,7 @@ async def dbLoad():
 					now2 = tmp_now
 
 					tmp_bossTime[j] = bossTime[j] = now2
-					tmp_bossTimeString[j] = bossTimeString[j] = bossTime[j].strftime('%H:%M:%S')
+					tmp_bossTimeString[j] = bossTimeString[j] = bossTime[j].strftime('%H:%M')
 					tmp_bossDateString[j] = bossDateString[j] = bossTime[j].strftime('%Y-%m-%d')
 					
 					bossData[j][6] = beforeBossData[i+1][tmp_msglen+2:len(beforeBossData[i+1])]
@@ -558,7 +558,7 @@ async def on_ready():
 
 	# 디스코드에는 현재 본인이 어떤 게임을 플레이하는지 보여주는 기능이 있습니다.
 	# 이 기능을 사용하여 봇의 상태를 간단하게 출력해줄 수 있습니다.
-	await client.change_presence(status=discord.Status.idle, activity=discord.Game(name="여어!히사시부리!", type=1))
+	await client.change_presence(status=discord.Status.idle, activity=discord.Game(name="안녕하세요!", type=1))
 
 	
 # 봇이 새로운 메시지를 수신했을때 동작되는 코드입니다.
@@ -650,7 +650,7 @@ async def on_message(msg):
 		
 		##################################
 
-		if message.content.startswith('!채널확인'):
+		if message.content.startswith('/채널확인'):
 			ch_information = ''
 			for i in range(len(channel_name)):
 				ch_information += channel_name[i] + '\n'
@@ -669,7 +669,7 @@ async def on_message(msg):
 
 		##################################
 
-		if message.content.startswith('!채널이동'):
+		if message.content.startswith('/채널이동'):
 			tmp_sayMessage1 = message.content
 			
 			for i in range(len(channel_name)):
@@ -744,7 +744,7 @@ async def on_message(msg):
 					now2 = now2 + datetime.timedelta(hours = int(bossData[i][1]), minutes = int(bossData[i][5]))
 							
 				tmp_bossTime[i] = bossTime[i] = nextTime = now2
-				tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+				tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 				tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 				embed = discord.Embed(
 						description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
@@ -800,7 +800,7 @@ async def on_message(msg):
 				
 				bossTime[i] = nextTime				
 
-				tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+				tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 				tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 				embed = discord.Embed(
 						description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
@@ -845,7 +845,7 @@ async def on_message(msg):
 						tmp_now = tmp_now + datetime.timedelta(days=int(1))
 
 					tmp_bossTime[i] = bossTime[i] = nextTime = tmp_now
-					tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+					tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 					tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 					embed = discord.Embed(
 							description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
@@ -873,16 +873,16 @@ async def on_message(msg):
 				await dbSave()
 				print ('<' + bossData[i][0] + ' 삭제완료>')
 			
-		if message.content.startswith('!오빠'):
+		if message.content.startswith('/오빠'):
 			await PlaySound(voice_client1, './sound/오빠.mp3')
-		if message.content.startswith('!언니'):
+		if message.content.startswith('/언니'):
 			await PlaySound(voice_client1, './sound/언니.mp3')
-		if message.content.startswith('!형'):
+		if message.content.startswith('/형'):
 			await PlaySound(voice_client1, './sound/형.mp3')
 
 		##################################
 
-		if message.content.startswith('!분배'):
+		if message.content.startswith('/분배'):
 			separate_money = []
 			separate_money = message.content[4:].split(" ")
 			num_sep = int(separate_money[0])
@@ -896,7 +896,7 @@ async def on_message(msg):
 
 		##################################
 
-		if message.content.startswith('!사다리'):
+		if message.content.startswith('/사다리'):
 			ladder = []
 			ladder = message.content[5:].split(" ")
 			num_cong = int(ladder[0])
@@ -913,7 +913,7 @@ async def on_message(msg):
 			else:
 				await client.get_channel(channel).send('```추첨인원이 총 인원과 같거나 많습니다. 재입력 해주세요```', tts=False)
 			
-		if message.content.startswith('!메뉴'):
+		if message.content.startswith('/메뉴'):
 			embed = discord.Embed(
 					title = "----- 메뉴 -----",
 					description= '```!현재시간\n!채널확인\n!채널이동 [채널명]\n!소환\n!불러오기\n!초기화\n!명치\n!미예약\n!분배 [인원] [금액]\n!사다리 [뽑을인원수] [아이디1] [아이디2] ...\n!보스일괄 00:00 또는 !보스일괄 0000\n!ㅂ,ㅃ,q\n\n[보스명]컷\n[보스명]컷 00:00 또는 [보스명]컷 0000\n[보스명]멍\n[보스명]멍 00:00 또는 [보스명]멍 0000\n[보스명]예상 00:00 또는 [보스명]예상 0000\n[보스명]삭제\n보스탐```',
@@ -927,7 +927,7 @@ async def on_message(msg):
 
 		##################################
 
-		if message.content.startswith('!미예약'):
+		if message.content.startswith('/미예약'):
 			temp_bossTime2 = []
 			temp_bossTimeSTR = ''
 			for i in range(bossNum):
@@ -949,7 +949,7 @@ async def on_message(msg):
 
 		##################################		
 			
-		if message.content.startswith('!v') or message.content.startswith('!ㅍ'):
+		if message.content.startswith('/v') or message.content.startswith('/ㅍ'):
 			tmp_sayMessage = message.content
 			sayMessage = tmp_sayMessage[3:]
 			await MakeSound(message.author.display_name +'님이.' + sayMessage, './sound/say')
@@ -958,7 +958,7 @@ async def on_message(msg):
 
 		##################################
 
-		if message.content.startswith('!명치'):
+		if message.content.startswith('/명치'):
 			await dbSave()
 			await client.get_channel(channel).send('<명치 맞고 숨고르는 중... 갑자기 인사해도 놀라지마세요!>', tts=False)
 			await asyncio.sleep(2)
@@ -977,7 +977,7 @@ async def on_message(msg):
 			
 		#############################
 
-		if message.content.startswith('!소환'):
+		if message.content.startswith('/소환'):
 			voice_channel = message.author.voice.channel
 			
 			if basicSetting[6] == "":
@@ -1021,7 +1021,7 @@ async def on_message(msg):
 		
 		##################################
 					
-		if message.content.startswith('!초기화'):
+		if message.content.startswith('/초기화'):
 			basicSetting = []
 			bossData = []
 
@@ -1049,7 +1049,7 @@ async def on_message(msg):
 
 		##################################
 		
-		if message.content.startswith('!보스일괄'):
+		if message.content.startswith('/보스일괄'):
 			for i in range(bossNum):
 				tmp_msg = '!보스일괄'
 				if len(hello) > len(tmp_msg) + 3 :
@@ -1090,7 +1090,7 @@ async def on_message(msg):
 					now2 = now2 + datetime.timedelta(hours = int(bossData[i][1]), minutes = int(bossData[i][5]))
 							
 				tmp_bossTime[i] = bossTime[i] = nextTime = now2
-				tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+				tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 				tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 
 			await dbSave()
@@ -1103,7 +1103,7 @@ async def on_message(msg):
 		##################################
 
 
-		if message.content.startswith('!설정확인'):			
+		if message.content.startswith('/설정확인'):			
 			setting_val = '보탐봇 재시작 설정시간 : ' + basicSetting[4] + '시 ' + basicSetting[5] + '분\n' + '보스젠알림시간1 : ' + basicSetting[1] + ' 분 전\n' + '보스젠알림시간2 : ' + basicSetting[3] + ' 분 전\n' + '보스멍확인시간 : ' + basicSetting[2] + ' 분 후\n'
 			embed = discord.Embed(
 					title = "----- 설정내용 -----",
@@ -1117,7 +1117,7 @@ async def on_message(msg):
 
 		##################################
 
-		if message.content.startswith('!불러오기'):
+		if message.content.startswith('/불러오기'):
 			await dbLoad()
 
 			if LoadChk == 0:
@@ -1127,7 +1127,7 @@ async def on_message(msg):
 		
 		##################################
 		
-		if message.content.startswith('!ㅂ') or message.content.startswith('!q') or message.content.startswith('!ㅃ'):
+		if message.content.startswith('/ㅂ') or message.content.startswith('/q') or message.content.startswith('/ㅃ'):
 			await dbLoad()
 
 			datelist = bossTime
@@ -1162,7 +1162,7 @@ async def on_message(msg):
 
 		##################################
 
-		if message.content.startswith('보스탐'):
+		if message.content.startswith('/보스'):
 			for i in range(bossNum):
 				for j in range(bossNum):
 					if bossTimeString[i] and bossTimeString[j] != '99:99:99':
@@ -1187,7 +1187,7 @@ async def on_message(msg):
 			
 			fixed_information = ''
 			for i in range(fixed_bossNum):
-					tmp_timeSTR = fixed_bossTime[i].strftime('%H:%M:%S')
+					tmp_timeSTR = fixed_bossTime[i].strftime('%H:%M')
 					fixed_information += fixed_bossData[i][0] + ' : ' + tmp_timeSTR + '\n'
 
 			fixed_information = '```' + fixed_information + '```'
@@ -1244,8 +1244,8 @@ async def on_message(msg):
 
 		##################################
 
-		if message.content.startswith('!현재시간'):
+		if message.content.startswith('/현재시간'):
 			now3 = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
-			await client.get_channel(channel).send(now3.strftime('%Y-%m-%d') + '   ' + now3.strftime('%H:%M:%S'), tts=False)
+			await client.get_channel(channel).send(now3.strftime('%Y-%m-%d') + '   ' + now3.strftime('%H:%M'), tts=False)
 
 client.run(access_token)
