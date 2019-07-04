@@ -650,7 +650,7 @@ async def on_message(msg):
 		
 		##################################
 
-		if message.content.startswith('/채널확인'):
+		if message.content.startswith('!채널확인'):
 			ch_information = ''
 			for i in range(len(channel_name)):
 				ch_information += channel_name[i] + '\n'
@@ -669,7 +669,7 @@ async def on_message(msg):
 
 		##################################
 
-		if message.content.startswith('/채널이동'):
+		if message.content.startswith('!채널이동'):
 			tmp_sayMessage1 = message.content
 			
 			for i in range(len(channel_name)):
@@ -1162,7 +1162,7 @@ async def on_message(msg):
 
 		##################################
 
-		if message.content.startswith('보스'):
+		if message.content.startswith('!보스'):
 			for i in range(bossNum):
 				for j in range(bossNum):
 					if bossTimeString[i] and bossTimeString[j] != '99:99:99':
