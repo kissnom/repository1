@@ -1188,7 +1188,7 @@ async def on_message(msg):
 			fixed_information = ''
 			for i in range(fixed_bossNum):
 					tmp_timeSTR = fixed_bossTime[i].strftime('%H:%M')
-					fixed_information += fixed_bossData[i][0] + ' : ' + tmp_timeSTR + '\n'
+					fixed_information += tmp_timeSTR + ' : ' + fixed_bossData[i][0] + '\n'
 
 			fixed_information = '```' + fixed_information + '```'
 
