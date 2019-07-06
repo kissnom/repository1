@@ -419,9 +419,9 @@ async def dbSave():
 			if timestring == bossTime[i]:
 				if bossTimeString[i] != '99:99:99' :
 					if bossData[i][2] == '0' :
-						information1 += ' - ' + bossData[i][0] + '(' + bossData[i][1] + '.' + bossData[i][5] + ') : ' + bossTimeString[i] + ' @ ' + bossDateString[i] + ' (미입력 ' + str(bossMungCnt[i]) + '회)' + ' * ' + bossData[i][6] + '\n'
+						information1 += ' - ' + bossTimeString[i] + '(' + bossData[i][1] + '.' + bossData[i][5] + ') : ' + bossData[i][0] + ' @ ' + bossDateString[i] + ' * ' + bossData[i][6] + '\n'
 					else : 
-						information1 += ' - ' + bossData[i][0] + '(' + bossData[i][1] + '.' + bossData[i][5] + ') : ' + bossTimeString[i] + ' @ ' + bossDateString[i] + ' (멍 ' + str(bossMungCnt[i]) + '회)' + ' * ' + bossData[i][6] + '\n'
+						information1 += ' - ' + bossTimeString[i] + '(' + bossData[i][1] + '.' + bossData[i][5] + ') : ' + bossData[i][0] + ' @ ' + bossDateString[i] + ' * ' + bossData[i][6] + '\n'
 						
 	contents = repo.get_contents("my_bot.db")
 	repo.update_file(contents.path, "bossDB", information1, contents.sha)
@@ -467,7 +467,7 @@ async def dbLoad():
 					now2 = tmp_now
 
 					tmp_bossTime[j] = bossTime[j] = now2
-					tmp_bossTimeString[j] = bossTimeString[j] = bossTime[j].strftime('%H:%M:%S')
+					tmp_bossTimeString[j] = bossTimeString[j] = bossTime[j].strftime('%H:%M')
 					tmp_bossDateString[j] = bossDateString[j] = bossTime[j].strftime('%Y-%m-%d')
 					
 					bossData[j][6] = beforeBossData[i+1][tmp_msglen+2:len(beforeBossData[i+1])]
@@ -744,7 +744,7 @@ async def on_message(msg):
 					now2 = now2 + datetime.timedelta(hours = int(bossData[i][1]), minutes = int(bossData[i][5]))
 							
 				tmp_bossTime[i] = bossTime[i] = nextTime = now2
-				tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+				tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 				tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 				embed = discord.Embed(
 						description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
@@ -800,7 +800,7 @@ async def on_message(msg):
 				
 				bossTime[i] = nextTime				
 
-				tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+				tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 				tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 				embed = discord.Embed(
 						description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
@@ -845,7 +845,7 @@ async def on_message(msg):
 						tmp_now = tmp_now + datetime.timedelta(days=int(1))
 
 					tmp_bossTime[i] = bossTime[i] = nextTime = tmp_now
-					tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+					tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 					tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 					embed = discord.Embed(
 							description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
@@ -1090,7 +1090,7 @@ async def on_message(msg):
 					now2 = now2 + datetime.timedelta(hours = int(bossData[i][1]), minutes = int(bossData[i][5]))
 							
 				tmp_bossTime[i] = bossTime[i] = nextTime = now2
-				tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+				tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 				tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 
 			await dbSave()
@@ -1187,7 +1187,7 @@ async def on_message(msg):
 			
 			fixed_information = ''
 			for i in range(fixed_bossNum):
-					tmp_timeSTR = fixed_bossTime[i].strftime('%H:%M:%S')
+					tmp_timeSTR = fixed_bossTime[i].strftime('%H:%M')
 					fixed_information += fixed_bossData[i][0] + ' : ' + tmp_timeSTR + '\n'
 
 			fixed_information = '```' + fixed_information + '```'
