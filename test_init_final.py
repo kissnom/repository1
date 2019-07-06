@@ -1211,14 +1211,14 @@ async def on_message(msg):
 						if bossTimeString[i] != '99:99:99' :
 							if bossData[i][2] == '0' :
 								if bossMungCnt[i] == 0 :
-									information += bossData[i][0] + ' : ' + bossTimeString[i] + ' ' + bossData[i][6] + '\n'
+									information += bossTimeString[i] + ' : ' + bossData[i][0] + ' ' + bossData[i][6] + '\n'
 								else :
-									information += bossData[i][0] + ' : ' + bossTimeString[i] + ' (미 ' + str(bossMungCnt[i]) + '회)' + ' ' + bossData[i][6] + '\n'
+									information += bossTimeString[i] + ' : ' + bossData[i][0] + ' ' + bossData[i][6] + '\n'
 							else : 
 								if bossMungCnt[i] == 0 :
 									information += bossData[i][0] + ' : ' + bossTimeString[i] + ' ' + bossData[i][6] + '\n'
 								else :
-									information += bossData[i][0] + ' : ' + bossTimeString[i] + ' (멍 ' + str(bossMungCnt[i]) + '회)' + ' ' + bossData[i][6] + '\n'
+									information += bossData[i][0] + ' : ' + bossTimeString[i] + ' ' + bossData[i][6] + '\n'
 									
 			if len(information) != 0:
 				information = "```" + information + "```"
