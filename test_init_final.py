@@ -1213,7 +1213,7 @@ async def on_message(msg):
 								if bossMungCnt[i] == 0 :
 									information += bossTimeString[i] + ' : ' + bossData[i][0] + ' ' + bossData[i][6] + '\n'
 								else :
-									information += bossTimeString[i] + ' : ' + bossData[i][0] + ' (미 ' + str(bossMungCnt[i]) + '회)' + ' ' + bossData[i][6] + '\n'
+									information += bossTimeString[i] + ' : ' + bossData[i][0] + ' ' + bossData[i][6] + '\n'
 							else : 
 								if bossMungCnt[i] == 0 :
 									information += bossTimeString[i] + ' : ' + bossData[i][0] + ' ' + bossData[i][6] + '\n'
