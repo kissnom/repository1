@@ -269,9 +269,9 @@ async def my_background_task():
 		priv = now+datetime.timedelta(minutes=int(basicSetting[1]))
 		aftr = now+datetime.timedelta(minutes=int(0-int(basicSetting[2])))
 		
-		nowTimeString = now.strftime('%H:%M:%S')
+		nowTimeString = now.strftime('%H:%M')
 		nowDateString = now.strftime('%Y-%m-%d')
-		endTimeString = endTime.strftime('%H:%M:%S')
+		endTimeString = endTime.strftime('%H:%M')
 		endDateString = endTime.strftime('%Y-%m-%d')
 		
 
@@ -325,7 +325,7 @@ async def my_background_task():
 					#print ('if ', bossTime[i])
 					bossMungFlag[i] = True
 					tmp_bossTime[i] = bossTime[i]
-					tmp_bossTimeString[i] = tmp_bossTime[i].strftime('%H:%M:%S')
+					tmp_bossTimeString[i] = tmp_bossTime[i].strftime('%H:%M')
 					tmp_bossDateString[i] = tmp_bossTime[i].strftime('%Y-%m-%d')
 					bossTimeString[i] = '99:99:99'
 					bossDateString[i] = '9999-99-99'
@@ -348,7 +348,7 @@ async def my_background_task():
 								bossMungFlag[i] = False
 								bossMungCnt[i] = bossMungCnt[i] + 1
 								tmp_bossTime[i] = bossTime[i] = nextTime = now+datetime.timedelta(hours=int(bossData[i][1]), minutes=int(0-int(basicSetting[2])+int(bossData[i][5])))
-								tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+								tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 								tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 								embed = discord.Embed(
 									description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
@@ -364,7 +364,7 @@ async def my_background_task():
 								bossMungFlag[i] = False
 								bossMungCnt[i] = bossMungCnt[i] + 1
 								tmp_bossTime[i] = bossTime[i] = nextTime = now+datetime.timedelta(hours=int(bossData[i][1]), minutes=int(0-int(basicSetting[2])+int(bossData[i][5])))
-								tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M:%S')
+								tmp_bossTimeString[i] = bossTimeString[i] = nextTime.strftime('%H:%M')
 								tmp_bossDateString[i] = bossDateString[i] = nextTime.strftime('%Y-%m-%d')
 								embed = discord.Embed(
 									description= '```다음 ' + bossData[i][0] + ' ' + bossTimeString[i] + '입니다.```',
@@ -1216,9 +1216,9 @@ async def on_message(msg):
 									information += bossTimeString[i] + ' : ' + bossData[i][0] + ' ' + bossData[i][6] + '\n'
 							else : 
 								if bossMungCnt[i] == 0 :
-									information += bossData[i][0] + ' : ' + bossTimeString[i] + ' ' + bossData[i][6] + '\n'
+									information += bossTimeString[i] + ' : ' + bossData[i][0] + ' ' + bossData[i][6] + '\n'
 								else :
-									information += bossData[i][0] + ' : ' + bossTimeString[i] + ' ' + bossData[i][6] + '\n'
+									information += bossTimeString[i] + ' : ' + bossData[i][0] + ' ' + bossData[i][6] + '\n'
 									
 			if len(information) != 0:
 				information = "```" + information + "```"
@@ -1246,6 +1246,6 @@ async def on_message(msg):
 
 		if message.content.startswith('!현재시간'):
 			now3 = datetime.datetime.now() + datetime.timedelta(hours = int(basicSetting[0]))
-			await client.get_channel(channel).send(now3.strftime('%Y-%m-%d') + '   ' + now3.strftime('%H:%M:%S'), tts=False)
+			await client.get_channel(channel).send(now3.strftime('%Y-%m-%d') + '   ' + now3.strftime('%H:%M'), tts=False)
 
 client.run(access_token)
